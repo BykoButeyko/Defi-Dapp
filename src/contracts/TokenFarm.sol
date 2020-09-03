@@ -20,7 +20,7 @@ contract TokenFarm {
         owner = msg.sender;
     }
 
-    // 1. Stakes tokens (Deposit)
+    //Stakes tokens (Deposit)
     function stakeTokens(uint _amount) public {
         //Require amount greater than 0
         require(_amount > 0, "amount cannot be 0");
@@ -42,10 +42,26 @@ contract TokenFarm {
 
     }
 
-    //2. Unstaking tokens (Withdraw)
+    //Unstaking tokens (Withdraw)
+    function unstakeTokens() public {
+        //Fetch staking balance
+        uint balance = stakingBalance[msg.sender];
 
-    //3. Issuing Tokens (Reward for staking)
-    function issueToken() public {
+        //Require amount greater than 0
+        require(balance > 0, "staking balance cannot be 0");
+
+        //Transfer Mock DAI Tokens to this contract for staking
+        daiToken.transfer(msg.sender, balance);
+
+        //Reset the staking balance
+        stakingBalance[msg.sender] = 0;
+
+        //Update staking status
+        isStaking[msg.sender] = false;
+    }
+
+    //Issuing Tokens (Reward for staking)
+    function issueTokens() public {
         require(msg.sender == owner, "caller must be the owner");
 
         //Issue tokens to all stakers
