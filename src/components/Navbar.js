@@ -4,7 +4,7 @@ import farmer from '../farmer.png'
 class Navbar extends Component {
 
   render() {
-    return (
+      return (
       <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
         <a
           className="navbar-brand col-sm-3 col-md-2 mr-0"
@@ -13,7 +13,7 @@ class Navbar extends Component {
           rel="noopener noreferrer"
         >
           <img src={farmer} width="30" height="30" className="d-inline-block align-top" alt="" />
-          &nbsp; DApp Token Farm
+          &nbsp; Clorofeel Token Farm
         </a>
 
         <ul className="navbar-nav px-3">
